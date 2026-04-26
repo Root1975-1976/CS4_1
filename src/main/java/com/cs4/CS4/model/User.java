@@ -1,4 +1,6 @@
 package com.cs4.CS4.model;
+import java.util.List;
+
 import javax.management.relation.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
