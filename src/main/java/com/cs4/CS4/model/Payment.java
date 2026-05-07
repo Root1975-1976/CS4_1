@@ -18,4 +18,34 @@ public class Payment {
     private PaymentMethod method;
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	public Booking getBooking() {
+		return booking;
+	}
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
+	public PaymentMethod getMethod() {
+		return method;
+	}
+	public void setMethod(PaymentMethod method) {
+		this.method = method;
+	}
+	public PaymentStatus getStatus() {
+		return status;
+	}
+	public void setStatus(PaymentStatus status) {
+		this.status = status;
+	}
 	}
