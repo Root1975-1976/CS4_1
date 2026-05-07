@@ -20,5 +20,41 @@ public class Booking {
     private LocalDate checkOut;
     @Enumerated(EnumType.STRING)
     private BookingStatus status;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Room getRoom() {
+		return room;
+	}
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+	public LocalDate getCheckIn() {
+		return checkIn;
+	}
+	public void setCheckIn(LocalDate checkIn) {
+		this.checkIn = checkIn;
+	}
+	public LocalDate getCheckOut() {
+		return checkOut;
+	}
+	public void setCheckOut(LocalDate checkOut) {
+		this.checkOut = checkOut;
+	}
+	public BookingStatus getStatus() {
+		return status;
+	}
+	public void setStatus(BookingStatus status) {
+		this.status = status;
+	}
 }
 
