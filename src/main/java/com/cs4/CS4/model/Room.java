@@ -7,22 +7,23 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import com.cs4.CS4.model.RoomType;
 @Entity
 public class Room {
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private int id;
+	    private Long id;
 	    private int roomNumber;
-	    @Enumerated(EnumType.STRING)
+	    @Enumerated(EnumType.ORDINAL)	 
 	    private RoomType type;
 	    private double price;
 	    private boolean available;
 	    @OneToMany(mappedBy = "room")
 	    private List<Booking> bookings;
-		public int getId() {
+		public Long getId() {
 			return id;
 		}
-		public void setId(int id) {
+		public void setId(Long id) {
 			this.id = id;
 		}
 		public int getRoomNumber() {

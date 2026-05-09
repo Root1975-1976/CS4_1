@@ -6,11 +6,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import com.cs4.CS4.model.PaymentMethod;
+import com.cs4.CS4.model.PaymentStatus;
 @Entity
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private double amount;
     @OneToOne
     private Booking booking;
@@ -18,10 +20,10 @@ public class Payment {
     private PaymentMethod method;
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public double getAmount() {

@@ -1,7 +1,6 @@
 package com.cs4.CS4.model;
 import java.util.List;
-
-import javax.management.relation.Role;
+import com.cs4.CS4.model.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -9,7 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 @Entity
+@Table(name = "users")
 public class User {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
