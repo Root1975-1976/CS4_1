@@ -14,7 +14,7 @@ public class Room {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 	    private int roomNumber;
-	    @Enumerated(EnumType.ORDINAL)	 
+	    @Enumerated(EnumType.STRING)
 	    private RoomType type;
 	    private double price;
 	    private boolean available;
