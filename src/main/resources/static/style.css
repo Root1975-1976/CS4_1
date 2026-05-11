@@ -1,31 +1,99 @@
-body {
-    font-family: Arial;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
-h1, h2 {
-    color: #333;
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial;
+    background:#f4f6f9;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
+.navbar{
+    background:#1e293b;
+    padding:15px;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
+.navbar a{
+    color:white;
+    text-decoration:none;
+    margin-right:20px;
+    font-weight:bold;
 }
 
-th {
-    background-color: #333;
-    color: white;
+.container{
+    width:85%;
+    margin:auto;
+    margin-top:40px;
 }
 
-.links a {
-    margin-right: 15px;
-    text-decoration: none;
-    color: blue;
+.card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table th{
+    background:#1e293b;
+    color:white;
+    padding:12px;
+}
+
+.table td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+
+.login-container{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.form-card{
+    background:white;
+    width:350px;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-card h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.form-card input,
+.form-card select{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.form-card button{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#1e293b;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.form-card button:hover{
+    background:#334155;
+}
+
+.form-card a{
+    text-decoration:none;
+}
+
+.error{
+    color:red;
+    text-align:center;
 }
