@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Bookings</title>
+    <title>Booking History</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -14,13 +14,12 @@
 
     <div class="card">
 
-        <h2>Bookings</h2>
+        <h2>My Booking History</h2>
 
         <table class="table">
 
             <tr>
                 <th>ID</th>
-                <th>User</th>
                 <th>Room</th>
                 <th>Check In</th>
                 <th>Check Out</th>
@@ -30,8 +29,6 @@
             <tr th:each="b : ${bookings}">
 
                 <td th:text="${b.id}"></td>
-
-                <td th:text="${b.user.name}"></td>
 
                 <td th:text="${b.room.roomNumber}"></td>
 
