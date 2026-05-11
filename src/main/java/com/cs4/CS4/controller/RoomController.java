@@ -8,6 +8,7 @@ import com.cs4.CS4.service.RoomService;
 public class RoomController {
     @Autowired
     private RoomService roomService;
+    
     @GetMapping("/rooms")
     public String getRooms(Model model) {
         model.addAttribute("rooms", roomService.getAllRooms());

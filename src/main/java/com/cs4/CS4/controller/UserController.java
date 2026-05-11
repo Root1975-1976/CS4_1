@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserController {
 	@Autowired
     private UserService userService;
+	
     @GetMapping("/users")
     public String getUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());

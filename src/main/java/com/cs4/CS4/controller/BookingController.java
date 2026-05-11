@@ -8,7 +8,8 @@ import com.cs4.CS4.service.BookingService;
 public class BookingController {
 	    @Autowired
 	    private BookingService bookingService;
-	    @GetMapping("/bookings")
+	    
+	    @GetMapping("/bookings")	
 	    public String getBookings(Model model) {
 	        model.addAttribute("bookings", bookingService.getAllBookings());
 	        return "bookings";

@@ -8,10 +8,12 @@ import com.cs4.CS4.repository.RoomRepository;
 public class RoomService {
  @Autowired
     private RoomRepository roomRepo;
+ 
     public Room saveRoom(Room room) {
         room.setAvailable(true);
         return roomRepo.save(room);
     }
+    
     public List<Room> getAllRooms() {
         return roomRepo.findAll();
     }
