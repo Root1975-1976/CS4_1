@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.cs4.CS4.model.Role;
 import com.cs4.CS4.model.User;
+import com.cs4.CS4.service.BookingService;
+import com.cs4.CS4.service.RoomService;
 import com.cs4.CS4.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,6 +20,12 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RoomService roomService;
+
+    @Autowired
+    private BookingService bookingService;
+    
     @GetMapping("/register")
     public String registerPage(Model model) {
         model.addAttribute("user", new User());
@@ -63,5 +71,18 @@ public class AuthController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/login";
+    }
+    
+    @GetMapping("/admin/home")
+    public String adminHome(Model model) {
+        model.addAttribute("usersCount", userService.getAllUsers().size());
+        model.addAttribute("roomsCount", roomService.getAllRooms().size());
+        model.addAttribute("bookingsCount", bookingService.getAllBookings().size());
+        return "admin-home";
+    }
+
+    @GetMapping("/customer/home")
+    public String customerHome() {
+        return "customer-home";
     }
 }

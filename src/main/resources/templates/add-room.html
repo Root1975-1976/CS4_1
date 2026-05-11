@@ -9,16 +9,19 @@
 <div class="container">
     <div class="form-card">
         <h2>Add Room</h2>
-        <form th:action="@{/rooms/save}" th:object="${room}" method="post">
-            <input type="number" th:field="*{roomNumber}" placeholder="Room Number" required>
-            <input type="number" th:field="*{price}" placeholder="Price" required>
+        <form th:action="@{/add-room}"
+              th:object="${room}"
+              method="post">
+            <input type="number"th:field="*{roomNumber}" placeholder="Room Number" required>
             <select th:field="*{type}">
-                <option value="SINGLE">Single</option>
-                <option value="DOUBLE">Double</option>
-                <option value="FAMILY">Family</option>
-                <option value="SUIT">Suit</option>
+                <option value="SINGLE">SINGLE</option>
+                <option value="DOUBLE">DOUBLE</option>
+                <option value="FAMILY">FAMILY</option>
+                <option value="SUIT">SUIT</option>
             </select>
-            <button type="submit">Save Room</button>
+
+            <input type="number" th:field="*{price}" placeholder="Price" required>
+            <button type="submit">Add Room</button>
         </form>
     </div>
 </div>

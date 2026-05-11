@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Room</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div th:replace="navbar :: navbar"></div>
+<div class="container">
+    <div class="form-card">
+        <h2>Edit Room</h2>
+        <form th:action="@{/update-room}"
+              th:object="${room}"
+              method="post">
+
+            <input type="hidden"
+                   th:field="*{id}">
+
+            <input type="number"
+                   th:field="*{roomNumber}"
+                   placeholder="Room Number"
+                   required>
+
+            <select th:field="*{type}">
+
+                <option value="SINGLE">
+                    SINGLE
+                </option>
+
+                <option value="DOUBLE">
+                    DOUBLE
+                </option>
+
+                <option value="FAMILY">
+                    FAMILY
+                </option>
+
+                <option value="SUIT">
+                    SUIT
+                </option>
+
+            </select>
+
+            <input type="number"
+                   th:field="*{price}"
+                   placeholder="Price"
+                   required>
+
+            <select th:field="*{available}">
+
+                <option value="true">
+                    Available
+                </option>
+
+                <option value="false">
+                    Not Available
+                </option>
+
+            </select>
+
+            <button type="submit">
+
+                Update Room
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

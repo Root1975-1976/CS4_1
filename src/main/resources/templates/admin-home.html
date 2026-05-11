@@ -6,11 +6,36 @@
 </head>
 <body>
 <div th:replace="navbar :: navbar"></div>
-<div class="container">
-    <div class="card">
-        <h1>Admin Dashboard</h1>
-        <p>Manage Users, Rooms and Bookings</p>
+<div class="dashboard">
+    <h1>Admin Dashboard</h1>
+    <div class="cards">
+        <div class="card">
+            <h2>Total Users</h2>
+            <p th:text="${usersCount}"></p>
+        </div>
+
+        <div class="card">
+            <h2>Total Rooms</h2>
+            <p th:text="${roomsCount}"></p>
+        </div>
+
+        <div class="card">
+            <h2>Total Bookings</h2>
+            <p th:text="${bookingsCount}"></p>
+        </div>
+
     </div>
+
+    <div class="actions">
+        <a href="/users" class="btn">Manage Users</a>
+
+        <a href="/rooms" class="btn">Manage Rooms</a>
+
+        <a href="/bookings" class="btn">View Bookings</a>
+
+        <a href="/add-room" class="btn">Add Room</a>
+    </div>
+
 </div>
 </body>
 </html>
