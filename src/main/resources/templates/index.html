@@ -1,18 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hotel System</title>
+    <title>Hotel Management System</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="hero">
+    <div class="overlay">
+        <div class="hero-content">
+            <h1>Hotel Management System</h1>
+            <p>
+                Book rooms, manage reservations,
+                and enjoy a complete hotel experience.
+            </p>
+            <div class="hero-buttons">
+                <a href="/login" class="btn">Login</a>
+                <a href="/register" class="btn secondary-btn">Register</a>
+            </div>
 
-<h1>Hotel Booking System</h1>
-
-<div class="links">
-    <a href="/users">Users</a>
-    <a href="/rooms">Rooms</a>
-    <a href="/bookings">Bookings</a>
+        </div>
+    </div>
 </div>
 
+<section class="features">
+    <div class="feature-card">
+        <h3>Room Booking</h3>
+        <p>Customers can easily book rooms online.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Admin Dashboard</h3>
+        <p>
+            Admins can manage users, rooms,
+            bookings, and payments.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Booking History</h3>
+        <p>Users can view all previous bookings.</p>
+    </div>
+</section>
 </body>
 </html>

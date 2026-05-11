@@ -13,14 +13,18 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @ManyToOne
     private User user;
+    
     @ManyToOne
     private Room room;
     private LocalDate checkIn;
     private LocalDate checkOut;
+    
     @Enumerated(EnumType.STRING)
     private BookingStatus status;
+    
 	public Long getId() {
 		return id;
 	}

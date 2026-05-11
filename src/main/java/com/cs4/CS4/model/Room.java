@@ -14,12 +14,15 @@ public class Room {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 	    private int roomNumber;
+	    
 	    @Enumerated(EnumType.STRING)
 	    private RoomType type;
 	    private double price;
 	    private boolean available;
+	    
 	    @OneToMany(mappedBy = "room")
 	    private List<Booking> bookings;
+	    
 		public Long getId() {
 			return id;
 		}

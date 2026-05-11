@@ -15,7 +15,6 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 @Controller
 public class AuthController {
-
     @Autowired
     private UserService userService;
 
@@ -26,8 +25,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@Valid @ModelAttribute User user,
-                               BindingResult result) {
+    public String registerUser(@Valid @ModelAttribute User user, BindingResult result) {
         if(result.hasErrors()) {
             return "register";
         }
@@ -44,11 +42,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(String email,
-                        String password,
-                        HttpSession session,
-                        HttpServletResponse response,
-                        Model model) {
+    public String login(String email, String password, HttpSession session, 
+    		HttpServletResponse response,Model model) {
         User user = userService.login(email, password);
         if(user == null) {
             model.addAttribute("error", "Invalid email or password");

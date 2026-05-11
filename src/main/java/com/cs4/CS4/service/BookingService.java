@@ -39,6 +39,6 @@ public class BookingService {
 	    public List<Booking> getBookingsByUser(User user) {
 	        return bookingRepo.findByUser(user);
 	    }
-	}
+}
 
 

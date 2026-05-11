@@ -5,7 +5,6 @@ import com.cs4.CS4.model.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-
 @Entity
 @Table(name = "users")
 public class User {

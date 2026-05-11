@@ -4,12 +4,10 @@
     <title>Users</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
 <div th:replace="navbar :: navbar"></div>
 <div class="container">
     <div class="card">
-    
         <h2>Users</h2>
         <table class="table">
             <tr>
@@ -25,10 +23,8 @@
                 <td th:text="${u.email}"></td>
                 <td th:text="${u.role}"></td>
             </tr>
-
         </table>
     </div>
 </div>
-
 </body>
 </html>

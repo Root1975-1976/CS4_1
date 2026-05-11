@@ -14,12 +14,16 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private double amount;
+    
     @OneToOne
     private Booking booking;
+    
     @Enumerated(EnumType.STRING)
     private PaymentMethod method;
+    
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
+    
 	public Long getId() {
 		return id;
 	}

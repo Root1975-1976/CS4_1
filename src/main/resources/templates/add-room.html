@@ -7,30 +7,20 @@
 <body>
 <div th:replace="navbar :: navbar"></div>
 <div class="container">
-
     <div class="form-card">
-
         <h2>Add Room</h2>
-
         <form th:action="@{/rooms/save}" th:object="${room}" method="post">
-
             <input type="number" th:field="*{roomNumber}" placeholder="Room Number" required>
             <input type="number" th:field="*{price}" placeholder="Price" required>
-            
             <select th:field="*{type}">
                 <option value="SINGLE">Single</option>
                 <option value="DOUBLE">Double</option>
                 <option value="FAMILY">Family</option>
                 <option value="SUIT">Suit</option>
             </select>
-
             <button type="submit">Save Room</button>
-
         </form>
-
     </div>
-
 </div>
-
 </body>
 </html>
