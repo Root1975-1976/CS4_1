@@ -60,6 +60,7 @@ public class AuthController {
         session.setAttribute("loggedUser", user);
         Cookie cookie = new Cookie("username", user.getName());
         cookie.setMaxAge(60 * 60);
+        cookie.setPath("/");
         response.addCookie(cookie);
         if(user.getRole() == Role.ADMIN) {
             return "redirect:/admin/home";

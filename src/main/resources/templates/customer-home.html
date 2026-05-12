@@ -9,7 +9,7 @@
 
 <div class="container">
     <div class="card">
-        <h1>Welcome Customer</h1>
+   <h1 th:text="'Welcome, ' + ${session.loggedUser.name}"></h1>
         <p>Book Rooms and View History</p>
     </div>
 </div>
