@@ -4,6 +4,7 @@
     <title>Bookings</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
 <div th:replace="navbar :: navbar"></div>
 <div class="container">
@@ -18,6 +19,7 @@
                 <th>Check Out</th>
                 <th>Status</th>
             </tr>
+
             <tr th:each="b : ${bookings}">
                 <td th:text="${b.id}"></td>
                 <td th:text="${b.user.name}"></td>

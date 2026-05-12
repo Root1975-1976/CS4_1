@@ -615,8 +615,636 @@ table tr:hover td {
     50% { opacity: 1; transform: scaleY(1); }
 }
 
+/* ─── DASHBOARD ─── */
+.dashboard {
+    min-height: 100vh;
+    background-color: var(--obsidian);
+    background-image:
+        radial-gradient(ellipse at 10% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(201, 168, 76, 0.03) 0%, transparent 50%);
+    padding: 140px 60px 80px;
+}
+
+.dashboard > h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--ivory);
+    margin-bottom: 6px;
+    position: relative;
+    display: inline-block;
+}
+
+.dashboard > h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-top: 16px;
+}
+
+.dashboard-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 14px;
+    font-weight: 400;
+}
+
+/* ─── STAT CARDS ─── */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 56px;
+    margin-bottom: 1px;
+}
+
+.card {
+    background: var(--charcoal);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+.card:hover { background: rgba(201, 168, 76, 0.03); }
+.card:hover::before { transform: scaleX(1); }
+
+.card h2 {
+    font-family: var(--font-body);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 300;
+    color: var(--ivory);
+    line-height: 1;
+    letter-spacing: -0.01em;
+}
+
+.card-icon {
+    position: absolute;
+    top: 36px; right: 36px;
+    font-size: 20px;
+    color: rgba(201, 168, 76, 0.2);
+}
+
+/* ─── DASHBOARD ACTIONS ─── */
+.actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 48px;
+}
+
+.actions .btn {
+    padding: 14px 36px;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+}
+
+/* ─── CONTAINER ─── */
+.container {
+    min-height: 100vh;
+    padding: 120px 60px 80px;
+    background-color: var(--obsidian);
+    background-image:
+        radial-gradient(ellipse at 10% 30%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 70%, rgba(201, 168, 76, 0.02) 0%, transparent 50%);
+}
+
+.container > .card {
+    background: var(--charcoal);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px 48px 40px;
+    position: relative;
+}
+
+.container > .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 1px;
+    background: var(--gold);
+}
+
+.container > .card h1 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--ivory);
+    margin-bottom: 8px;
+}
+
+.container > .card h2 {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--ivory);
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.container > .card > p {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.container > .form-card {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* ─── TABLE (class="table") ─── */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: transparent;
+    border: 1px solid var(--border);
+    margin-top: 8px;
+}
+
+.table th {
+    background: var(--obsidian);
+    color: var(--gold);
+    font-family: var(--font-body);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    padding: 18px 24px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 16px 24px;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: rgba(250, 248, 242, 0.75);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.07);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr {
+    transition: background 0.2s ease;
+}
+
+.table tr:hover td {
+    background: rgba(201, 168, 76, 0.04);
+    color: var(--ivory);
+}
+
+/* ─── DELETE BUTTON ─── */
+.delete-btn {
+    border-color: rgba(160, 80, 80, 0.5) !important;
+    color: #C09090 !important;
+}
+
+.delete-btn::before {
+    background: rgba(160, 80, 80, 0.15) !important;
+}
+
+.delete-btn:hover {
+    color: var(--ivory) !important;
+    border-color: rgba(160, 80, 80, 0.8) !important;
+}
+
+/* ─── INLINE BTN IN TABLE ─── */
+.table .btn {
+    padding: 8px 20px;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+}
+
+/* ─── REGISTER / LOGIN — paragraph links ─── */
+.form-card p {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 24px;
+}
+
+.form-card p a {
+    color: var(--gold);
+    text-decoration: none;
+    margin-left: 6px;
+    letter-spacing: 0.08em;
+    transition: color 0.3s ease;
+}
+
+.form-card p a:hover {
+    color: var(--gold-light);
+}
+
+/* ─── BOOK-ROOM PAGE ─── */
+.booking-page {
+    min-height: 100vh;
+    padding: 120px 60px 80px;
+    background-color: var(--obsidian);
+    background-image:
+        radial-gradient(ellipse at 15% 40%, rgba(201,168,76,0.04) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 60%, rgba(201,168,76,0.03) 0%, transparent 55%);
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.booking-room-preview {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid var(--border);
+    background: var(--charcoal);
+    position: relative;
+    overflow: hidden;
+}
+
+.booking-room-preview img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.75);
+}
+
+.booking-room-preview .room-preview-info {
+    padding: 28px 32px;
+}
+
+.booking-room-preview .room-preview-info::before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 20px;
+}
+
+.booking-room-preview .room-preview-type {
+    font-size: 9px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.booking-room-preview .room-preview-name {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 300;
+    color: var(--ivory);
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+}
+
+.booking-room-preview .room-preview-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.booking-room-preview .room-preview-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+
+.booking-room-preview .detail-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.booking-room-preview .detail-value {
+    font-size: 12px;
+    color: var(--ivory);
+    letter-spacing: 0.08em;
+}
+
+.booking-room-preview .detail-price {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--gold);
+}
+
+.booking-form-card {
+    width: 380px;
+    flex-shrink: 0;
+    background: var(--charcoal);
+    border: 1px solid var(--border);
+    padding: 44px 40px;
+    position: relative;
+}
+
+.booking-form-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 72px; height: 1px;
+    background: var(--gold);
+}
+
+.booking-form-card .form-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.booking-form-card h2 {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: var(--ivory);
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.booking-form-card .form-label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.booking-form-card input[type="date"],
+.booking-form-card input[type="number"] {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--ivory);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    outline: none;
+    transition: var(--transition);
+    appearance: none;
+    -webkit-appearance: none;
+    color-scheme: dark;
+}
+
+.booking-form-card input[type="date"]:focus,
+.booking-form-card input[type="number"]:focus {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.04);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.08);
+}
+
+.booking-form-card input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7) sepia(1) saturate(1.5) hue-rotate(5deg);
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.booking-form-card button[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.booking-form-card button[type="submit"]::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--gold);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+    z-index: -1;
+}
+
+.booking-form-card button[type="submit"]:hover {
+    color: var(--obsidian);
+}
+
+.booking-form-card button[type="submit"]:hover::before {
+    transform: scaleY(1);
+}
+
+.booking-guests-hint {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-top: -14px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* ─── ROOMS GRID ─── */
+.rooms-grid-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 8px;
+}
+
+.room-list-card {
+    background: var(--charcoal);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.room-list-card:hover .room-list-img {
+    transform: scale(1.04);
+    filter: brightness(0.6);
+}
+
+.room-list-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.75);
+    transition: transform 0.7s ease, filter 0.5s ease;
+}
+
+.room-list-badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    padding: 5px 14px;
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border-radius: 1px;
+    font-family: var(--font-body);
+    font-weight: 400;
+}
+
+.room-list-badge.available {
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+}
+
+.room-list-badge.booked {
+    background: rgba(138,138,138,0.12);
+    color: var(--muted);
+    border: 1px solid rgba(138,138,138,0.25);
+}
+
+.room-list-body {
+    padding: 24px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.room-list-type {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+}
+
+.room-list-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--ivory);
+    letter-spacing: 0.04em;
+}
+
+.room-list-price {
+    font-size: 13px;
+    color: var(--gold-light);
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+}
+
+.room-list-actions {
+    display: flex;
+    gap: 8px;
+    padding: 0 28px 24px;
+    flex-wrap: wrap;
+}
+
+.room-list-actions .btn {
+    padding: 10px 24px;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    flex: 1;
+    text-align: center;
+}
+
+/* ─── TABLE ACTIONS ─── */
+.table th:last-child {
+    text-align: center;
+    width: 200px;
+}
+
+.table td:last-child {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.table td:last-child .btn {
+    margin: 2px 4px;
+    display: inline-block;
+}
+
 /* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+    .booking-page {
+        flex-direction: column;
+        padding: 100px 20px 60px;
+    }
+
+    .booking-form-card {
+        width: 100%;
+    }
+
+    .rooms-grid-list {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
+    .container {
+        padding: 100px 20px 60px;
+    }
+
+    .container > .card,
+    .container > .form-card {
+        padding: 32px 20px;
+    }
+
     .navbar {
         padding: 20px 24px;
         gap: 16px;
@@ -648,5 +1276,13 @@ table tr:hover td {
     table th,
     table td {
         padding: 14px 16px;
+    }
+
+    .dashboard {
+        padding: 120px 20px 60px;
+    }
+
+    .actions {
+        flex-direction: column;
     }
 }

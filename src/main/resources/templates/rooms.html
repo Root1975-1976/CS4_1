@@ -5,65 +5,60 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
 <div th:replace="navbar :: navbar"></div>
+
 <div class="container">
     <div class="card">
+
         <h2>Rooms</h2>
+
         <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Room Number</th>
+                <th>Type</th>
+                <th>Price / Night</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
 
-    <tr>
-        <th>ID</th>
-        <th>Room Number</th>
-        <th>Type</th>
-        <th>Price</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
-    <tr th:each="room : ${rooms}">
-        <td th:text="${room.id}"></td>
-        <td th:text="${room.roomNumber}"></td>
-        <td th:text="${room.type}"></td>
-        <td th:text="${room.price}"></td>
-        <td>
-            <span th:if="${room.available}">
-                Available
-            </span>
-            <span th:unless="${room.available}">
-                Booked
-            </span>
-        </td>
-        <td>
-            <a th:if="${room.available}"
-               th:href="@{/book-room/{id}(id=${room.id})}"
-               class="btn">
-                Book
-            </a>
-        </td>
-        <td>
+            <tr th:each="room : ${rooms}">
 
-    <a th:if="${session.loggedUser.role.name() == 'CUSTOMER'
-               and room.available}"
-       th:href="@{/book-room/{id}(id=${room.id})}"
-       class="btn">
-        Book
-    </a>
+                <td th:text="${room.id}"></td>
+                <td th:text="${room.roomNumber}"></td>
+                <td th:text="${room.type}"></td>
+                <td th:text="'EGP ' + ${room.price}"></td>
 
-    <a th:if="${session.loggedUser.role.name() == 'ADMIN'}"
-       th:href="@{/edit-room/{id}(id=${room.id})}"
-       class="btn">
-        Edit
-    </a>
+                <td>
+                    <span th:if="${room.available}">Available</span>
+                    <span th:unless="${room.available}">Booked</span>
+                </td>
 
-    <a th:if="${session.loggedUser.role.name() == 'ADMIN'}"
-       th:href="@{/delete-room/{id}(id=${room.id})}"
-       class="btn delete-btn">
-        Delete
-    </a>
+                <td>
+                    <a th:if="${session.loggedUser.role.name() == 'CUSTOMER' and room.available}"
+                       th:href="@{/book-room/{id}(id=${room.id})}"
+                       class="btn">
+                        Book
+                    </a>
 
-</td>
-    </tr>
-</table>
+                    <a th:if="${session.loggedUser.role.name() == 'ADMIN'}"
+                       th:href="@{/edit-room/{id}(id=${room.id})}"
+                       class="btn">
+                        Edit
+                    </a>
+                    <a th:if="${session.loggedUser.role.name() == 'ADMIN'}"
+                       th:href="@{/delete-room/{id}(id=${room.id})}"
+                       class="btn delete-btn">
+                        Delete
+                    </a>
+                </td>
+
+            </tr>
+        </table>
+
     </div>
 </div>
+
 </body>
 </html>

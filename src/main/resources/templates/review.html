@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Write Review</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--ivory);
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            outline: none;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.4s ease;
+        }
+        textarea:focus {
+            border-color: var(--gold);
+            background: rgba(201, 168, 76, 0.04);
+        }
+        .star-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+        .star-row input[type="radio"] { display: none; }
+        .star-row label {
+            font-size: 28px;
+            color: var(--border);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .star-row input[type="radio"]:checked ~ label,
+        .star-row label:hover,
+        .star-row label:hover ~ label {
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+<div th:replace="navbar :: navbar"></div>
+
+<div class="login-container">
+    <div class="form-card">
+
+        <h2>Write a Review</h2>
+
+        <p style="text-align:center;margin-bottom:28px;font-size:11px;letter-spacing:0.15em;color:var(--muted);">
+            Room <span th:text="${booking.room.roomNumber}" style="color:var(--gold-light);"></span>
+            &nbsp;·&nbsp;
+            <span th:text="${booking.room.type}"></span>
+        </p>
+
+        <form th:action="@{/review/{id}(id=${booking.id})}" method="post">
+
+            <label class="form-label">Rating</label>
+            <div class="star-row">
+                <input type="radio" name="rating" id="s1" value="1">
+                <label for="s1">★</label>
+                <input type="radio" name="rating" id="s2" value="2">
+                <label for="s2">★</label>
+                <input type="radio" name="rating" id="s3" value="3" checked>
+                <label for="s3">★</label>
+                <input type="radio" name="rating" id="s4" value="4">
+                <label for="s4">★</label>
+                <input type="radio" name="rating" id="s5" value="5">
+                <label for="s5">★</label>
+            </div>
+
+            <label class="form-label">Comment</label>
+            <textarea name="comment" placeholder="Share your experience..." required></textarea>
+
+            <button type="submit">Submit Review</button>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

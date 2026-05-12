@@ -5,28 +5,76 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
 <div th:replace="navbar :: navbar"></div>
 
 <div class="container">
     <div class="card">
+
         <h2>My Booking History</h2>
+
         <table class="table">
             <tr>
                 <th>ID</th>
                 <th>Room</th>
                 <th>Check In</th>
                 <th>Check Out</th>
+                <th>Guests</th>
+                <th>Total</th>
                 <th>Status</th>
+                <th>Actions</th>
             </tr>
-            
+
             <tr th:each="b : ${bookings}">
+
                 <td th:text="${b.id}"></td>
                 <td th:text="${b.room.roomNumber}"></td>
                 <td th:text="${b.checkIn}"></td>
                 <td th:text="${b.checkOut}"></td>
-                <td th:text="${b.status}"></td>
+                <td th:text="${b.guests}"></td>
+                <td th:text="'EGP ' + ${#numbers.formatDecimal(b.totalPrice, 1, 2)}"></td>
+
+                <td>
+                    <span th:switch="${b.status.name()}">
+                        <span th:case="'CONFIRMED'"
+                              style="display:inline-block;padding:4px 14px;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;border-radius:1px;background:rgba(201,168,76,0.1);color:var(--gold);border:1px solid rgba(201,168,76,0.3);">
+                            CONFIRMED
+                        </span>
+                        <span th:case="'PENDING'"
+                              style="display:inline-block;padding:4px 14px;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;border-radius:1px;background:rgba(138,138,138,0.1);color:var(--muted);border:1px solid rgba(138,138,138,0.2);">
+                            PENDING
+                        </span>
+                        <span th:case="'CANCELLED'"
+                              style="display:inline-block;padding:4px 14px;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;border-radius:1px;background:rgba(160,80,80,0.1);color:#C08080;border:1px solid rgba(160,80,80,0.2);">
+                            CANCELLED
+                        </span>
+                    </span>
+                </td>
+
+                <td>
+                    <a th:if="${b.status.name() == 'PENDING'}"
+                       th:href="@{/payment/{id}(id=${b.id})}"
+                       class="btn">
+                        Pay
+                    </a>
+
+                    <a th:if="${b.status.name() == 'PENDING' or b.status.name() == 'CONFIRMED'}"
+                       th:href="@{/cancel-booking/{id}(id=${b.id})}"
+                       class="btn delete-btn"
+                       onclick="return confirm('Are you sure you want to cancel this booking?')">
+                        Cancel
+                    </a>
+
+                    <a th:if="${b.status.name() == 'CONFIRMED'}"
+                       th:href="@{/review/{id}(id=${b.id})}"
+                       class="btn">
+                        Review
+                    </a>
+                </td>
+
             </tr>
         </table>
+
     </div>
 </div>
 </body>

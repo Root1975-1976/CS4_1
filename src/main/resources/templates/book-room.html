@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Room</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div th:replace="navbar :: navbar"></div>
+
+<div class="booking-page">
+
+    <div class="booking-room-preview">
+        <div class="room-preview-info">
+            <div class="room-preview-type" th:text="${room.type}"></div>
+            <div class="room-preview-name">
+                Room <span th:text="${room.roomNumber}"></span>
+            </div>
+
+            <div class="room-preview-details">
+
+                <div class="room-preview-detail-row">
+                    <span class="detail-label">Status</span>
+                    <span class="detail-value">Available</span>
+                </div>
+
+                <div class="room-preview-detail-row">
+                    <span class="detail-label">Price Per Night</span>
+                    <span class="detail-price">
+                        EGP <span th:text="${room.price}"></span>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="booking-form-card">
+        <span class="form-eyebrow">Reserve Your Stay</span>
+        <h2>Book Room</h2>
+
+        <p class="error" th:if="${error}" th:text="${error}"></p>
+        
+        <form th:action="@{/book-room/{id}(id=${room.id})}" method="post">
+
+            <label class="form-label">Check-In Date</label>
+            <input type="date"
+                   name="checkIn"
+                   id="checkIn"
+                   required
+                   th:min="${#temporals.format(#temporals.createNow(), 'yyyy-MM-dd')}">
+
+            <label class="form-label">Check-Out Date</label>
+            <input type="date"
+                   name="checkOut"
+                   id="checkOut"
+                   required>
+
+            <label class="form-label">Number of Guests</label>
+            <input type="number"
+                   name="guests"
+                   id="guests"
+                   min="1"
+                   max="10"
+                   value="1">
+            <span class="booking-guests-hint">Maximum 10 guests per room</span>
+
+            <div id="price-preview" style="
+                display:none;
+                margin-bottom:20px;
+                padding:16px;
+                border:1px solid var(--border);
+                background:rgba(201,168,76,0.04);
+                text-align:center;">
+                <span style="font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);">
+                    Estimated Total
+                </span>
+                <div style="font-family:var(--font-display);font-size:32px;font-weight:300;color:var(--ivory);margin-top:6px;">
+                    EGP <span id="total-price">0</span>
+                </div>
+                <span style="font-size:10px;color:var(--muted);letter-spacing:0.1em;">
+                    <span id="nights-count">0</span> night(s)
+                </span>
+            </div>
+            <button type="submit">Continue to Payment</button>
+        </form>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    const pricePerNight = /*[[${room.price}]]*/ 0;
+    const checkInInput  = document.getElementById('checkIn');
+    const checkOutInput = document.getElementById('checkOut');
+    const pricePreview  = document.getElementById('price-preview');
+    const totalSpan     = document.getElementById('total-price');
+    const nightsSpan    = document.getElementById('nights-count');
+
+    checkInInput.addEventListener('change', function () {
+        checkOutInput.min = this.value;
+        if (checkOutInput.value && checkOutInput.value <= this.value) {
+            checkOutInput.value = '';
+        }
+        updatePrice();
+    });
+
+    checkOutInput.addEventListener('change', updatePrice);
+
+    function updatePrice() {
+        const ci = checkInInput.value;
+        const co = checkOutInput.value;
+        if (!ci || !co) { pricePreview.style.display = 'none'; return; }
+        const nights = Math.round((new Date(co) - new Date(ci)) / 86400000);
+        if (nights <= 0) { pricePreview.style.display = 'none'; return; }
+        nightsSpan.textContent = nights;
+        totalSpan.textContent  = (nights * pricePerNight).toFixed(2);
+        pricePreview.style.display = 'block';
+    }
+</script>
+</body>
+</html>

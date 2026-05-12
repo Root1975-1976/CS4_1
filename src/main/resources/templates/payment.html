@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Payment</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div th:replace="navbar :: navbar"></div>
+
+<div class="login-container">
+    <div class="form-card">
+
+        <h2>Payment</h2>
+
+        <div style="margin-bottom:28px;padding:20px;border:1px solid var(--border);background:rgba(201,168,76,0.03);">
+
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(201,168,76,0.08);">
+                <span style="font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);">Room</span>
+                <span style="font-size:12px;color:var(--ivory);" th:text="${booking.room.roomNumber}"></span>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(201,168,76,0.08);">
+                <span style="font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);">Check-In</span>
+                <span style="font-size:12px;color:var(--ivory);" th:text="${booking.checkIn}"></span>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(201,168,76,0.08);">
+                <span style="font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);">Check-Out</span>
+                <span style="font-size:12px;color:var(--ivory);" th:text="${booking.checkOut}"></span>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(201,168,76,0.08);">
+                <span style="font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);">Guests</span>
+                <span style="font-size:12px;color:var(--ivory);" th:text="${booking.guests}"></span>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;padding:14px 0 0;">
+                <span style="font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);">Total</span>
+                <span style="font-family:var(--font-display);font-size:26px;font-weight:300;color:var(--gold);">
+                    EGP <span th:text="${#numbers.formatDecimal(booking.totalPrice, 1, 2)}"></span>
+                </span>
+            </div>
+
+        </div>
+
+        <p class="error" th:if="${error}" th:text="${error}"></p>
+
+        <form th:action="@{/payment/{id}(id=${booking.id})}" method="post">
+
+            <label class="form-label">Payment Method</label>
+            <select name="method">
+                <option th:each="m : ${methods}"
+                        th:value="${m}"
+                        th:text="${m}">
+                </option>
+            </select>
+
+            <button type="submit">Confirm & Pay</button>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

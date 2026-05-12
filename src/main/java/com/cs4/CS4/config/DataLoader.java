@@ -14,14 +14,13 @@ public class DataLoader implements CommandLineRunner {
 
 	    @Override
 	    public void run(String... args) throws Exception {
-
 	        if(roomRepo.count() == 0) {
 	            Room r1 = new Room();
 	            r1.setRoomNumber(101);
 	            r1.setType(RoomType.SINGLE);
 	            r1.setPrice(1200);
 	            r1.setAvailable(true);
-
+	            
 	            Room r2 = new Room();
 	            r2.setRoomNumber(202);
 	            r2.setType(RoomType.DOUBLE);

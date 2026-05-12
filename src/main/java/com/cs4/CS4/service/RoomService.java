@@ -6,25 +6,27 @@ import com.cs4.CS4.model.Room;
 import com.cs4.CS4.repository.RoomRepository;
 @Service
 public class RoomService {
- @Autowired
+    @Autowired 
     private RoomRepository roomRepo;
- 
-    public Room saveRoom(Room room) {
+
+    public Room addRoom(Room room) {
         room.setAvailable(true);
         return roomRepo.save(room);
     }
-    
+
+    public Room updateRoom(Room room) {
+        return roomRepo.save(room);
+    }
+
     public List<Room> getAllRooms() {
         return roomRepo.findAll();
     }
-    
+
     public Room getRoomById(Long id) {
         return roomRepo.findById(id).orElse(null);
     }
-    
+
     public void deleteRoom(Long id) {
         roomRepo.deleteById(id);
     }
-    
-    
 }
