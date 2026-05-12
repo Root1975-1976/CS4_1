@@ -24,6 +24,9 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
     
+	public Payment() {
+	}
+	
 	public Long getId() {
 		return id;
 	}

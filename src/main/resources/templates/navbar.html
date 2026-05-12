@@ -9,12 +9,14 @@
             <a href="/users">Users</a>
             <a href="/bookings">Bookings</a>
             <a href="/add-room">Add Room</a>
+            <a href="/profile">Profile</a>      
         </span>
 
         <span th:if="${session.loggedUser != null and session.loggedUser.role.name() == 'CUSTOMER'}">
             <a href="/customer/home">Customer Home</a>
             <a href="/rooms">Rooms</a>
             <a href="/history">History</a>
+            <a href="/profile">Profile</a>
         </span>
         
         <a href="/logout">Logout</a>

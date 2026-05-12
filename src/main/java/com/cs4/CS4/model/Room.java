@@ -23,6 +23,9 @@ public class Room {
 	    @OneToMany(mappedBy = "room")
 	    private List<Booking> bookings;
 	    
+		public Room() {
+		}
+		
 		public Long getId() {
 			return id;
 		}

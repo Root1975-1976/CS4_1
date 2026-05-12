@@ -18,6 +18,9 @@ public class Review {
 	@ManyToOne
 	private Room room;
 
+	public Review() {
+	}
+	
 	public Long getId() {
 		return id;
 	 }

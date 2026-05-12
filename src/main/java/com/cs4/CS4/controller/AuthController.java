@@ -33,8 +33,12 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@Valid @ModelAttribute User user, BindingResult result) {
+    public String registerUser(@Valid @ModelAttribute User user, BindingResult result, Model model) {
         if(result.hasErrors()) {
+            return "register";
+        }
+        if(userService.findByEmail(user.getEmail()) != null) {
+            model.addAttribute("error","Email already registered");
             return "register";
         }
         if(user.getRole() == null) {
@@ -85,5 +89,29 @@ public class AuthController {
     @GetMapping("/customer/home")
     public String customerHome() {
         return "customer-home";
+    }
+    
+    @GetMapping("/profile")
+    public String profile(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("loggedUser");
+        if(user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        return "profile";
+    }
+    
+    @PostMapping("/update-profile")
+    public String updateProfile(@ModelAttribute User updatedUser, HttpSession session) {
+        User sessionUser = (User) session.getAttribute("loggedUser");
+        if(sessionUser == null) {
+            return "redirect:/login";
+        }
+        sessionUser.setName(updatedUser.getName());
+        sessionUser.setEmail(updatedUser.getEmail());
+        sessionUser.setPassword(updatedUser.getPassword());
+        userService.saveUser(sessionUser);
+        session.setAttribute("loggedUser", sessionUser);
+        return "redirect:/profile";
     }
 }

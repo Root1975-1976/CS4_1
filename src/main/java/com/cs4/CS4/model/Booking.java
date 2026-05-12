@@ -21,7 +21,10 @@ public class Booking {
     private int guests;
     private double totalPrice;
 
-    @Enumerated(EnumType.STRING)
+    public Booking() {
+	}
+    
+	@Enumerated(EnumType.STRING)
     private BookingStatus status;
 
     public Long getId(){
