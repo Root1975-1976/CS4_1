@@ -7,12 +7,11 @@
 <body>
 
 <div th:replace="navbar :: navbar"></div>
-
 <div class="container">
     <div class="card">
 
         <h2>Rooms</h2>
-
+        
         <table class="table">
             <tr>
                 <th>ID</th>
@@ -24,41 +23,41 @@
             </tr>
 
             <tr th:each="room : ${rooms}">
-
                 <td th:text="${room.id}"></td>
                 <td th:text="${room.roomNumber}"></td>
                 <td th:text="${room.type}"></td>
                 <td th:text="'EGP ' + ${room.price}"></td>
-
+                
                 <td>
                     <span th:if="${room.available}">Available</span>
                     <span th:unless="${room.available}">Booked</span>
                 </td>
 
                 <td>
-                    <a th:if="${session.loggedUser.role.name() == 'CUSTOMER' and room.available}"
+                    <a th:if="${session.loggedUser != null 
+                               and session.loggedUser.role.name() == 'CUSTOMER'
+                               and room.available}"
                        th:href="@{/book-room/{id}(id=${room.id})}"
                        class="btn">
                         Book
                     </a>
 
-                    <a th:if="${session.loggedUser.role.name() == 'ADMIN'}"
+                    <a th:if="${session.loggedUser != null
+                               and session.loggedUser.role.name() == 'ADMIN'}"
                        th:href="@{/edit-room/{id}(id=${room.id})}"
                        class="btn">
                         Edit
                     </a>
-                    <a th:if="${session.loggedUser.role.name() == 'ADMIN'}"
+                    <a th:if="${session.loggedUser != null
+                               and session.loggedUser.role.name() == 'ADMIN'}"
                        th:href="@{/delete-room/{id}(id=${room.id})}"
                        class="btn delete-btn">
                         Delete
                     </a>
                 </td>
-
             </tr>
         </table>
-
     </div>
 </div>
-
 </body>
-</html>
+</html> 
